@@ -12,7 +12,7 @@ const prayerTimingRoutes = require('./Routes/PrayerTimingRoutes');
 const app = express();
 
 app.use(cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://bejewelled-scone-32d0f8.netlify.app","http://localhost:5173"],
     methods: ["GET", "POST", "PUT"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"]
