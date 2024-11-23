@@ -83,15 +83,17 @@ const login = async (req, res) => {
         res.cookie('accesstoken',accesstoken,{
             maxAge:10*60*1000,
             httpOnly:true,
-            secure:process.env.NODE_ENV ==="production",
-            sameSite:'strict'
+            // secure:process.env.NODE_ENV ==="production",
+            secure:true,
+            sameSite:'none'
 
         });
         res.cookie('refreshtoken',refreshtoken,{
             maxAge:60*60*1000,
             httpOnly:true,
-            secure:process.env.NODE_ENV==='production',
-            sameSite:'strict'
+            // secure:process.env.NODE_ENV==='production',
+            secure:true,
+            sameSite:'none'
         });
         console.log('data sent to frontend');
         res.status(200).json({ message: 'Login successful'});
@@ -118,8 +120,9 @@ const authenticate = async (req, res, next) => {
         res.cookie('accesstoken', accesstoken, {
           maxAge: 1 * 24 * 60 * 60 * 1000,
           httpOnly: true,
-          secure: process.env.NODE_ENV === "production",
-          sameSite: 'strict'
+          // secure: process.env.NODE_ENV === "production",
+          secure:true,
+          sameSite: 'none'
         });
       } else {
         decodetoken = jwtDecode(token);
@@ -145,8 +148,9 @@ const accesstoken = async (req,res)=>{
             res.cookie('accesstoken',accesstoken,{
                 maxAge:10*24*60*60*1000,
                 httpOnly:true,
-                secure:process.env.NODE_ENV==='production',
-                sameSite:'strict'
+                // secure:process.env.NODE_ENV==='production',
+                secure:true,
+                sameSite:'none'
             })
             console.log('This is from access Token');
             // res.status(200),res.json({authenticate:true});
