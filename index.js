@@ -13,7 +13,7 @@ const iqamaRoutes = require('./Routes/IqamaRoutes');
 const app = express();
 
 app.use(cors({
-    origin: ["https://bejewelled-scone-32d0f8.netlify.app","http://localhost:5173"],
+    origin: ["https://celebrated-conkies-c8a055.netlify.app","http://localhost:5173"],
     methods: ["GET", "POST", "PUT"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"]
