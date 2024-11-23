@@ -21,9 +21,23 @@ const location = async (req, res) => {
         res.status(500).json({ message: 'Error fetching location data', error });
     }
 };
+const latandlan = async (req,res)=>{
+    try{
+        const email = req.email;
+        const user = await User.findOne({email:email});
+        const { latitude, longitude } = user;
+            res.status(200).json({ latitude, longitude });
+
+
+    }
+    catch(error){
+        console.log(error)
+    }
+}
 
 
 
 module.exports={
-    location
+    location,
+    latandlan,
 }

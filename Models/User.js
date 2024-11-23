@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const UserSchema = new mongoose.Schema({
+    MosqueId:{
+        type:String,
+        required:true,
+        unique:true,
+    },
     masjidname: {
         type: String,
         required: true,
@@ -17,14 +22,40 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    address:{
+        type: String,
+        required: true,
+    },
+    city:{
+        type: String,
+        required: true,
+    },
+    country:{
+        type: String,
+        required: true,
+    },
+    location:{
+        type: String,
+        required: true,
+    },
     latitude:{
         type:String,
-        required: true,
-        
+        required: true, 
     },
     longitude:{
         type:String,
         required: true,
+    },
+    postalcode:{
+        type: String,
+        required: true,
+    },
+    state:{
+        type: String,
+        required: true,
+    },
+    isverified: {
+        type: Boolean,
     }
 });
 

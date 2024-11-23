@@ -1,15 +1,33 @@
 const mongoose = require('mongoose');
 
-const PrayerTimingSchema = new mongoose.Schema({
-  email: { type: String, required: true },
-  date: { type: String, required: true },
-  timings: {
-    Fajr: { type: String, required: true },
-    Dhuhr: { type: String, required: true },
-    Asr: { type: String, required: true },
-    Maghrib: { type: String, required: true },
-    Isha: { type: String, required: true },
-  },
+const timingSchema = new mongoose.Schema({
+  fajr: String,
+  dhuhr: String,
+  asr: String,
+  maghrib: String,
+  isha: String,
 });
 
-module.exports = mongoose.model('PrayerTiming', PrayerTimingSchema);
+const monthSchema = new mongoose.Schema({
+  name: { type: String, required: true }, // Example: 'November'
+  timings: [
+    {
+      date: { type: String, required: true }, // Example: '01-11-2024'
+      timings: timingSchema,
+    },
+  ],
+});
+
+const yearSchema = new mongoose.Schema({
+  year: { type: Number, required: true }, // Example: 2024
+  months: [monthSchema],
+});
+
+const prayerTimingSchema = new mongoose.Schema({
+  email: { type: String, required: true },
+  years: [yearSchema],
+});
+
+const PrayerTiming = mongoose.model('PrayerTiming', prayerTimingSchema);
+
+module.exports = PrayerTiming;
